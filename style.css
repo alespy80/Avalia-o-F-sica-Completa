@@ -1,0 +1,327 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f0f2f5;
+  color: #1a1a2e;
+  min-height: 100vh;
+}
+
+header {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  color: white;
+  padding: 2rem;
+  text-align: center;
+}
+header h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+header p  { opacity: 0.75; font-size: 0.9rem; }
+
+main { max-width: 1000px; margin: 2rem auto; padding: 0 1rem; }
+
+/* ── ETAPAS ── */
+.etapas {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+.etapa {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: #e0e0e0;
+  color: #888;
+  cursor: default;
+  transition: background 0.2s, color 0.2s;
+}
+.etapa.ativa    { background: #2980b9; color: white; cursor: pointer; }
+.etapa.concluida{ background: #27ae60; color: white; cursor: pointer; }
+.etapa-num {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.75rem;
+}
+.etapa-sep { color: #ccc; font-size: 1.2rem; }
+.oculto { display: none !important; }
+
+/* ── INSTRUÇÃO ── */
+.instrucao {
+  background: #e8f4fd;
+  border-left: 4px solid #3498db;
+  padding: 1rem 1.25rem;
+  border-radius: 6px;
+  margin-bottom: 2rem;
+  font-size: 0.88rem;
+  color: #2c3e50;
+  line-height: 1.6;
+}
+
+/* ── DADOS DO ALUNO ── */
+.card-dados {
+  background: white;
+  border-radius: 10px;
+  padding: 1.25rem;
+  margin-bottom: 2rem;
+  border: 1px solid #e0e0e0;
+}
+.dados-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+.campo label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #888;
+  margin-bottom: 0.35rem;
+}
+.campo input, .campo select {
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  color: #1a1a2e;
+  background: white;
+  transition: border-color 0.2s;
+}
+.campo input:focus, .campo select:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+/* ── GRUPOS / CARDS ── */
+.grupo-vista { margin-bottom: 2rem; }
+.grupo-vista h3 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #888;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid #e0e0e0;
+}
+.grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.65rem;
+}
+.card-obs {
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 0.75rem 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+.card-obs:hover    { border-color: #3498db; background: #f0f8ff; }
+.card-obs.selecionado { border-color: #27ae60; background: #eafaf1; }
+
+.check-icon {
+  font-size: 1rem;
+  color: #ccc;
+  margin-top: 2px;
+  flex-shrink: 0;
+  transition: color 0.2s;
+}
+.card-obs.selecionado .check-icon { color: #27ae60; }
+.card-label { font-size: 0.88rem; font-weight: 600; color: #1a1a2e; }
+.card-obs.selecionado .card-label { color: #1e8449; }
+.card-desc  { font-size: 0.78rem; color: #888; margin-top: 2px; line-height: 1.4; }
+
+/* ── TRIAGEM CLÍNICA ── */
+.card-clinico.requer-medico { border-left: 4px solid #e74c3c; }
+.card-clinico.requer-medico.selecionado { border-color: #c0392b; background: #fdf0f0; }
+.tag-medico { font-size: 0.72rem; color: #e74c3c; font-weight: 600; margin-top: 3px; }
+
+/* ── AÇÕES ── */
+.acoes {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  flex-wrap: wrap;
+}
+#contador, #contador-clinico { font-size: 0.9rem; color: #555; flex: 1; }
+
+button {
+  padding: 0.65rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+#btn-avancar  { background: #2980b9; color: white; }
+#btn-avancar:hover { background: #1f6391; }
+#btn-avaliar  { background: #2980b9; color: white; }
+#btn-avaliar:hover { background: #1f6391; }
+#btn-limpar   { background: #ecf0f1; color: #555; }
+#btn-limpar:hover  { background: #dde1e3; }
+#btn-voltar   { background: #ecf0f1; color: #555; }
+#btn-voltar:hover  { background: #dde1e3; }
+#btn-editar   { background: #ecf0f1; color: #555; }
+#btn-editar:hover  { background: #dde1e3; }
+#btn-nova     { background: #27ae60; color: white; }
+#btn-nova:hover    { background: #1e8449; }
+#btn-imprimir { background: #8e44ad; color: white; }
+#btn-imprimir:hover{ background: #6c3483; }
+
+/* ── CABEÇALHO DO RESULTADO ── */
+.cabecalho-resultado {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  color: white;
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.cab-titulo { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem; opacity: 0.9; }
+.cab-dados  { display: flex; flex-wrap: wrap; gap: 1.25rem; font-size: 0.88rem; opacity: 0.85; }
+
+/* ── ALERTAS CLÍNICOS ── */
+.bloco-clinico {
+  background: white;
+  border-radius: 10px;
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid #e0e0e0;
+}
+.bloco-clinico h4 { margin-bottom: 1rem; font-size: 0.95rem; }
+.aviso-liberacao {
+  background: #fdf0f0;
+  border: 2px solid #e74c3c;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.88rem;
+  color: #c0392b;
+}
+.alerta-clinico {
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+}
+.alerta-clinico ul { padding-left: 1.25rem; margin-top: 0.4rem; }
+.alerta-clinico li { font-size: 0.85rem; margin-bottom: 0.25rem; line-height: 1.5; }
+.alerta-titulo { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.3rem; }
+.alerta-critico { background: #fdf0f0; border-left: 4px solid #e74c3c; }
+.alerta-critico .alerta-titulo { color: #c0392b; }
+.alerta-atencao { background: #fff8e1; border-left: 4px solid #f39c12; }
+.alerta-atencao .alerta-titulo { color: #d35400; }
+
+/* ── PADRÕES BIOMECÂNICOS ── */
+.bloco-alertas {
+  background: #fff8e1;
+  border-left: 4px solid #f39c12;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+}
+.bloco-alertas h4 { margin-bottom: 0.75rem; font-size: 0.95rem; }
+.bloco-alertas ul { padding-left: 1.25rem; }
+.bloco-alertas li { margin-bottom: 0.5rem; font-size: 0.88rem; line-height: 1.5; }
+.alerta-alta  { color: #c0392b; }
+.alerta-media { color: #d35400; }
+
+/* ── INFERÊNCIAS ── */
+.bloco-inferencias {
+  background: white;
+  border-radius: 10px;
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid #e0e0e0;
+}
+.bloco-inferencias h4 { margin-bottom: 1rem; font-size: 0.95rem; }
+.inferencias-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.inf-col strong {
+  display: block;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.6rem;
+}
+.inibidos strong  { color: #1a5276; }
+.encurtados strong{ color: #6c3483; }
+.inf-col ul { list-style: none; padding: 0; }
+.inf-col li { font-size: 0.85rem; padding: 0.3rem 0; border-bottom: 1px solid #f0f0f0; }
+.musculo { font-weight: 600; }
+.origem  { color: #aaa; font-size: 0.78rem; }
+
+/* ── FASES ── */
+.secao-treino {
+  border-radius: 10px;
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+.secao-treino h4 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.6rem;
+}
+.fase-descricao {
+  font-size: 0.85rem;
+  color: #555;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+.grupos-alvo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+.grupos-label {
+  font-size: 0.78rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.tag-musculo {
+  background: rgba(0,0,0,0.07);
+  border-radius: 4px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #333;
+}
+.fase-mobilidade    { background: #fef9e7; border-left: 4px solid #f1c40f; }
+.fase-ativacao      { background: #eaf4fb; border-left: 4px solid #3498db; }
+.fase-propriocepcao { background: #f4ecf7; border-left: 4px solid #9b59b6; }
+.fase-forca         { background: #eafaf1; border-left: 4px solid #27ae60; }
+
+/* ── RESPONSIVO ── */
+@media (max-width: 600px) {
+  .inferencias-grid { grid-template-columns: 1fr; }
+  .cab-dados { flex-direction: column; gap: 0.5rem; }
+}
+
+/* ── IMPRESSÃO ── */
+@media print {
+  header, .etapas, .acoes, #etapa-1, #etapa-2 { display: none !important; }
+  #etapa-3 { display: block !important; }
+  body { background: white; }
+  .cabecalho-resultado { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .secao-treino, .bloco-alertas, .alerta-clinico,
+  .bloco-clinico, .bloco-inferencias { break-inside: avoid; }
+}
