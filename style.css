@@ -1,0 +1,362 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+/* ══════════════════════════════════════
+   PALETA PROFISSIONAL
+   Primário:  #1e3a5f (azul-marinho)
+   Acento:    #2563eb (azul médio)
+   Sucesso:   #15803d (verde escuro)
+   Alerta:    #b45309 (âmbar escuro)
+   Perigo:    #b91c1c (vermelho escuro)
+   Neutros:   #f8fafc → #0f172a
+══════════════════════════════════════ */
+
+:root {
+  --bg:       #f4f6f9;
+  --surface:  #ffffff;
+  --surface2: #f8fafc;
+  --primario: #1e3a5f;
+  --acento:   #2563eb;
+  --acento2:  #3b82f6;
+  --sucesso:  #15803d;
+  --alerta:   #b45309;
+  --perigo:   #b91c1c;
+  --texto:    #1e293b;
+  --texto2:   #475569;
+  --muted:    #94a3b8;
+  --borda:    #e2e8f0;
+  --borda2:   #cbd5e1;
+  --sombra:   rgba(15,23,42,.08);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--texto);min-height:100vh;-webkit-font-smoothing:antialiased}
+
+/* ══ CAPA ══ */
+.capa{
+  position:fixed;inset:0;z-index:999;
+  background:#0c1628;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;transition:opacity .5s ease;
+}
+.capa-bg{
+  position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 80% 55% at 50% 0%,   rgba(37,99,235,.2)  0%, transparent 55%),
+    radial-gradient(ellipse 50% 35% at 90% 85%,  rgba(21,128,61,.1)  0%, transparent 50%),
+    radial-gradient(ellipse 40% 30% at 10% 65%,  rgba(37,99,235,.07) 0%, transparent 50%);
+}
+.capa::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(37,99,235,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37,99,235,.03) 1px, transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
+}
+.capa-inner{position:relative;z-index:1;max-width:580px;padding:0 1.5rem}
+.capa-badge{
+  display:inline-flex;align-items:center;gap:.45rem;
+  font-size:.6rem;font-weight:800;letter-spacing:.3em;text-transform:uppercase;
+  color:#93c5fd;background:rgba(37,99,235,.1);
+  border:1px solid rgba(37,99,235,.25);border-radius:3px;
+  padding:.3rem .9rem;margin-bottom:1.5rem;
+}
+.capa-dot{width:5px;height:5px;border-radius:50%;background:#60a5fa;animation:blink 1.5s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.capa-titulo{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(4rem,14vw,8rem);
+  font-weight:400;line-height:.9;letter-spacing:.04em;
+  color:#f8fafc;
+  text-shadow:0 0 60px rgba(37,99,235,.4);
+  margin-bottom:.6rem;
+  animation:glowPulse 3s ease-in-out infinite;
+}
+.capa-titulo span{color:#60a5fa}
+@keyframes glowPulse{0%,100%{text-shadow:0 0 50px rgba(37,99,235,.35)}50%{text-shadow:0 0 90px rgba(37,99,235,.6)}}
+.capa-linha{width:60px;height:1.5px;background:linear-gradient(90deg,transparent,#3b82f6,transparent);margin:.9rem auto 1rem}
+.capa-sub{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#334155;margin-bottom:2.5rem}
+.capa-btn{
+  display:inline-flex;align-items:center;gap:.55rem;
+  background:var(--acento);color:#fff;
+  padding:.9rem 2.2rem;border-radius:6px;
+  font-size:.85rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+  border:none;cursor:pointer;font-family:inherit;
+  box-shadow:0 0 28px rgba(37,99,235,.45);transition:all .25s;
+}
+.capa-btn:hover{background:#1d4ed8;transform:translateY(-2px);box-shadow:0 0 45px rgba(37,99,235,.6)}
+
+/* ══ HEADER ══ */
+header{
+  background:var(--primario);
+  color:#fff;padding:1.25rem 1.5rem;
+  box-shadow:0 2px 12px rgba(15,23,42,.2);
+}
+.header-top{max-width:960px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+header h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.3rem,3vw,1.7rem);letter-spacing:.06em;font-weight:400}
+header p{opacity:.55;font-size:.72rem;letter-spacing:.04em;margin-top:.1rem}
+.btn-tema{
+  background:rgba(255,255,255,.08);color:rgba(255,255,255,.75);
+  border:1px solid rgba(255,255,255,.15);border-radius:5px;
+  padding:.38rem .9rem;font-size:.7rem;font-weight:700;
+  cursor:pointer;font-family:inherit;transition:all .2s;white-space:nowrap;
+}
+.btn-tema:hover{background:rgba(255,255,255,.15);color:#fff}
+
+main{max-width:960px;margin:0 auto;padding:1.75rem 1rem 4rem}
+
+/* ══ ETAPAS ══ */
+.etapas{
+  display:flex;align-items:center;gap:.35rem;
+  margin-bottom:1.75rem;flex-wrap:wrap;
+  background:var(--surface);border-radius:8px;
+  padding:.4rem;border:1px solid var(--borda);
+  box-shadow:0 1px 3px var(--sombra);
+}
+.etapa{
+  display:flex;align-items:center;gap:.4rem;
+  padding:.48rem .9rem;border-radius:5px;
+  font-size:.75rem;font-weight:700;
+  background:transparent;color:var(--muted);
+  cursor:default;transition:all .2s;white-space:nowrap;flex:1;justify-content:center;
+}
+.etapa.ativa{background:var(--acento);color:#fff;cursor:pointer;box-shadow:0 1px 6px rgba(37,99,235,.3)}
+.etapa.concluida{background:var(--sucesso);color:#fff;cursor:pointer}
+.etapa-num{
+  width:18px;height:18px;border-radius:50%;
+  background:rgba(255,255,255,.2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.6rem;flex-shrink:0;
+}
+.etapa-sep{color:var(--borda2);font-size:.9rem;flex-shrink:0}
+.oculto{display:none!important}
+
+/* ══ INSTRUÇÃO ══ */
+.instrucao{
+  background:#eff6ff;border-left:3px solid var(--acento2);
+  padding:.85rem 1.1rem;border-radius:0 6px 6px 0;
+  margin-bottom:1.5rem;font-size:.82rem;color:#1e40af;line-height:1.65;
+}
+
+/* ══ CARD DADOS ══ */
+.card-dados{
+  background:var(--surface);border-radius:10px;
+  padding:1.25rem;margin-bottom:1.5rem;
+  border:1px solid var(--borda);
+  box-shadow:0 1px 4px var(--sombra);
+}
+.dados-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:.85rem}
+.campo label{
+  display:block;font-size:.62rem;font-weight:800;
+  text-transform:uppercase;letter-spacing:.08em;
+  color:var(--muted);margin-bottom:.28rem;
+}
+.campo input,.campo select{
+  width:100%;padding:.58rem .8rem;
+  border:1.5px solid var(--borda);border-radius:6px;
+  font-size:.86rem;font-family:inherit;
+  color:var(--texto);background:var(--surface);
+  transition:border-color .2s,box-shadow .2s;
+}
+.campo input:focus,.campo select:focus{
+  outline:none;border-color:var(--acento2);
+  box-shadow:0 0 0 3px rgba(59,130,246,.12);
+}
+
+/* ══ GRUPOS / CARDS ══ */
+.grupo-vista{margin-bottom:1.6rem}
+.grupo-vista h3{
+  font-size:.62rem;font-weight:800;text-transform:uppercase;
+  letter-spacing:.15em;color:var(--muted);
+  margin-bottom:.7rem;padding-bottom:.38rem;
+  border-bottom:1.5px solid var(--borda);
+  display:flex;align-items:center;gap:.45rem;
+}
+.grupo-vista h3::before{content:'';display:block;width:10px;height:10px;border-radius:50%;background:var(--acento2);opacity:.6}
+.grid-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.55rem}
+
+.card-obs{
+  background:var(--surface);border:1.5px solid var(--borda);
+  border-radius:8px;padding:.7rem .85rem;
+  cursor:pointer;display:flex;align-items:flex-start;gap:.55rem;
+  transition:all .18s;user-select:none;
+  box-shadow:0 1px 2px var(--sombra);
+}
+.card-obs:hover{border-color:var(--acento2);background:#eff6ff;transform:translateY(-1px);box-shadow:0 3px 8px rgba(37,99,235,.1)}
+.card-obs.selecionado{border-color:var(--sucesso);background:#f0fdf4;box-shadow:0 2px 6px rgba(21,128,61,.12)}
+.check-icon{font-size:.88rem;color:var(--borda2);margin-top:2px;flex-shrink:0;transition:color .18s}
+.card-obs.selecionado .check-icon{color:var(--sucesso)}
+.card-label{font-size:.82rem;font-weight:700;color:var(--texto);line-height:1.3}
+.card-obs.selecionado .card-label{color:#166534}
+.card-desc{font-size:.7rem;color:var(--muted);margin-top:2px;line-height:1.4}
+
+/* ── TRIAGEM ── */
+.card-clinico.requer-medico{border-left:3px solid var(--perigo)}
+.card-clinico.requer-medico.selecionado{border-color:#991b1b;background:#fef2f2}
+.tag-medico{font-size:.62rem;color:var(--perigo);font-weight:700;margin-top:3px}
+
+/* ══ AÇÕES ══ */
+.acoes{display:flex;align-items:center;gap:.7rem;margin:1.4rem 0;flex-wrap:wrap}
+#contador,#contador-clinico{font-size:.78rem;color:var(--texto2);flex:1;font-weight:600}
+button{padding:.6rem 1.3rem;border:none;border-radius:6px;font-size:.82rem;cursor:pointer;font-weight:700;transition:all .18s;font-family:inherit}
+#btn-avancar,#btn-avaliar{background:var(--acento);color:#fff;box-shadow:0 1px 6px rgba(37,99,235,.3)}
+#btn-avancar:hover,#btn-avaliar:hover{background:#1d4ed8;transform:translateY(-1px)}
+#btn-limpar,#btn-voltar,#btn-editar{background:var(--surface);color:var(--texto2);border:1.5px solid var(--borda)}
+#btn-limpar:hover,#btn-voltar:hover,#btn-editar:hover{background:var(--surface2);border-color:var(--borda2)}
+#btn-nova{background:var(--sucesso);color:#fff;box-shadow:0 1px 6px rgba(21,128,61,.25)}
+#btn-nova:hover{background:#166534}
+#btn-imprimir{background:var(--primario);color:#fff;box-shadow:0 1px 6px rgba(30,58,95,.25)}
+#btn-imprimir:hover{background:#162d4a}
+
+/* ══ RESULTADO ══ */
+.cabecalho-resultado{
+  background:var(--primario);color:#fff;
+  border-radius:10px;padding:1.4rem 1.5rem;
+  margin-bottom:1.1rem;
+  box-shadow:0 3px 14px rgba(15,23,42,.18);
+}
+.cab-titulo{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:.06em;margin-bottom:.55rem;opacity:.9;font-weight:400}
+.cab-dados{display:flex;flex-wrap:wrap;gap:.9rem;font-size:.78rem;opacity:.75}
+
+/* ── RESULTADO SAUDÁVEL ── */
+.resultado-saudavel{
+  background:var(--surface);border:1.5px solid #bbf7d0;
+  border-radius:10px;padding:2rem;text-align:center;
+  margin-bottom:1.1rem;box-shadow:0 1px 4px var(--sombra);
+}
+.rs-icone{
+  width:52px;height:52px;border-radius:50%;
+  background:var(--sucesso);color:#fff;
+  font-size:1.4rem;font-weight:900;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto .9rem;
+}
+.rs-titulo{font-size:1rem;font-weight:800;color:#166534;margin-bottom:.5rem}
+.rs-texto{font-size:.84rem;color:#166534;line-height:1.7;margin-bottom:1.1rem;opacity:.85}
+.rs-recomendacoes{background:var(--surface2);border-radius:8px;padding:1rem;text-align:left;border:1px solid #d1fae5}
+.rs-rec-titulo{font-size:.62rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--sucesso);margin-bottom:.6rem}
+.rs-recomendacoes ul{list-style:none;padding:0}
+.rs-recomendacoes li{font-size:.8rem;color:var(--texto2);padding:.35rem 0;border-bottom:1px solid #ecfdf5;padding-left:.9rem;position:relative;line-height:1.5}
+.rs-recomendacoes li::before{content:'✓';position:absolute;left:0;color:var(--sucesso);font-weight:900;font-size:.7rem}
+.rs-recomendacoes li:last-child{border:none}
+.rs-recomendacoes strong{color:var(--texto)}
+
+/* ── ALERTAS CLÍNICOS ── */
+.bloco-clinico{background:var(--surface);border-radius:10px;padding:1.1rem;margin-bottom:1rem;border:1px solid var(--borda);box-shadow:0 1px 3px var(--sombra)}
+.bloco-clinico h4{margin-bottom:.8rem;font-size:.82rem;font-weight:800;color:var(--texto)}
+.aviso-liberacao{background:#fef2f2;border:1.5px solid #fca5a5;border-radius:6px;padding:.7rem .9rem;margin-bottom:.8rem;font-size:.78rem;color:#991b1b}
+.alerta-clinico{border-radius:6px;padding:.7rem .9rem;margin-bottom:.5rem}
+.alerta-clinico ul{padding-left:1rem;margin-top:.3rem}
+.alerta-clinico li{font-size:.76rem;margin-bottom:.18rem;line-height:1.5}
+.alerta-titulo{font-weight:700;font-size:.8rem;margin-bottom:.22rem}
+.alerta-critico{background:#fef2f2;border-left:3px solid var(--perigo)}
+.alerta-critico .alerta-titulo{color:#991b1b}
+.alerta-atencao{background:#fffbeb;border-left:3px solid var(--alerta)}
+.alerta-atencao .alerta-titulo{color:#92400e}
+
+/* ── PADRÕES BIOMECÂNICOS ── */
+.bloco-alertas{background:#fffbeb;border-left:3px solid var(--alerta);border-radius:0 8px 8px 0;padding:.9rem 1.1rem;margin-bottom:1rem;box-shadow:0 1px 3px var(--sombra)}
+.bloco-alertas h4{margin-bottom:.65rem;font-size:.82rem;font-weight:800;color:#92400e}
+.bloco-alertas ul{padding-left:1rem}
+.bloco-alertas li{margin-bottom:.4rem;font-size:.78rem;line-height:1.55}
+.alerta-alta{color:#991b1b;font-weight:600}
+.alerta-media{color:#92400e}
+
+/* ── INFERÊNCIAS ── */
+.bloco-inferencias{background:var(--surface);border-radius:10px;padding:1.1rem;margin-bottom:1rem;border:1px solid var(--borda);box-shadow:0 1px 3px var(--sombra)}
+.bloco-inferencias h4{margin-bottom:.8rem;font-size:.82rem;font-weight:800;color:var(--texto)}
+.inferencias-grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+.inf-col strong{display:block;font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.45rem;padding:.28rem .6rem;border-radius:4px}
+.inibidos strong{color:#1e40af;background:#eff6ff}
+.encurtados strong{color:#6b21a8;background:#f5f3ff}
+.inf-col ul{list-style:none;padding:0}
+.inf-col li{font-size:.78rem;padding:.28rem 0;border-bottom:1px solid var(--borda);display:flex;align-items:baseline;gap:.35rem}
+.inf-col li:last-child{border:none}
+.musculo{font-weight:700;color:var(--texto)}
+.origem{color:var(--muted);font-size:.68rem}
+
+/* ── FASES ── */
+.secao-treino{border-radius:8px;padding:1rem 1.1rem;margin-bottom:.85rem;border:1px solid transparent}
+.secao-treino h4{font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.45rem}
+.fase-descricao{font-size:.78rem;color:var(--texto2);margin-bottom:.6rem;line-height:1.6}
+.grupos-alvo{display:flex;flex-wrap:wrap;gap:.3rem;align-items:center}
+.grupos-label{font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-right:.15rem}
+.tag-musculo{background:rgba(0,0,0,.05);border-radius:4px;padding:.16rem .5rem;font-size:.72rem;font-weight:700;color:var(--texto2)}
+.fase-mobilidade{background:#fefce8;border-color:#fde68a}
+.fase-mobilidade h4{color:#92400e}
+.fase-ativacao{background:#eff6ff;border-color:#bfdbfe}
+.fase-ativacao h4{color:#1e40af}
+.fase-propriocepcao{background:#faf5ff;border-color:#ddd6fe}
+.fase-propriocepcao h4{color:#6b21a8}
+.fase-forca{background:#f0fdf4;border-color:#bbf7d0}
+.fase-forca h4{color:#166534}
+
+/* ══ RESPONSIVO ══ */
+@media(max-width:600px){
+  .inferencias-grid{grid-template-columns:1fr}
+  .etapa{font-size:.68rem;padding:.4rem .55rem}
+}
+
+/* ══ TEMA ESCURO (suave) ══ */
+body.tema-escuro{
+  --bg:      #1a1f2e;
+  --surface: #222840;
+  --surface2:#1e2438;
+  --texto:   #e2e8f0;
+  --texto2:  #94a3b8;
+  --muted:   #64748b;
+  --borda:   #2d3748;
+  --borda2:  #374151;
+  --sombra:  rgba(0,0,0,.25);
+  background:var(--bg);color:var(--texto);
+}
+body.tema-escuro header{background:#0f1929}
+body.tema-escuro .etapas{background:var(--surface);border-color:var(--borda)}
+body.tema-escuro .instrucao{background:#1a2744;border-color:#3b82f6;color:#93c5fd}
+body.tema-escuro .card-dados,
+body.tema-escuro .bloco-clinico,
+body.tema-escuro .bloco-inferencias,
+body.tema-escuro .resultado-saudavel{background:var(--surface);border-color:var(--borda)}
+body.tema-escuro .campo input,
+body.tema-escuro .campo select{background:#1a1f2e;border-color:var(--borda);color:var(--texto)}
+body.tema-escuro .campo input:focus,
+body.tema-escuro .campo select:focus{border-color:#3b82f6}
+body.tema-escuro .card-obs{background:var(--surface);border-color:var(--borda)}
+body.tema-escuro .card-obs:hover{background:#1e2d4a;border-color:#3b82f6}
+body.tema-escuro .card-obs.selecionado{background:#14291e;border-color:#16a34a}
+body.tema-escuro .card-label{color:var(--texto)}
+body.tema-escuro .card-desc{color:var(--muted)}
+body.tema-escuro .grupo-vista h3{color:var(--muted);border-color:var(--borda)}
+body.tema-escuro .bloco-alertas{background:#2a2010;border-color:#d97706}
+body.tema-escuro .bloco-alertas h4{color:#fbbf24}
+body.tema-escuro .alerta-critico{background:#2a1010}
+body.tema-escuro .alerta-atencao{background:#2a2010}
+body.tema-escuro .inf-col li{border-color:var(--borda)}
+body.tema-escuro .inibidos strong{background:#1e2d4a;color:#93c5fd}
+body.tema-escuro .encurtados strong{background:#2a1a3a;color:#c4b5fd}
+body.tema-escuro .fase-mobilidade{background:#2a2510;border-color:#92400e}
+body.tema-escuro .fase-ativacao{background:#101e3a;border-color:#1e40af}
+body.tema-escuro .fase-propriocepcao{background:#1e1030;border-color:#6b21a8}
+body.tema-escuro .fase-forca{background:#0f2a1a;border-color:#166534}
+body.tema-escuro .secao-treino h4{color:var(--texto)}
+body.tema-escuro .fase-descricao{color:var(--muted)}
+body.tema-escuro .tag-musculo{background:rgba(255,255,255,.07);color:var(--texto2)}
+body.tema-escuro #btn-limpar,
+body.tema-escuro #btn-voltar,
+body.tema-escuro #btn-editar{background:var(--surface);color:var(--texto2);border-color:var(--borda)}
+body.tema-escuro .rs-titulo{color:#4ade80}
+body.tema-escuro .rs-texto{color:#86efac}
+body.tema-escuro .rs-recomendacoes{background:#1a2a1a;border-color:#166534}
+body.tema-escuro .rs-recomendacoes li{color:var(--texto2);border-color:#1f3a1f}
+body.tema-escuro .aviso-liberacao{background:#2a1010;border-color:#dc2626;color:#fca5a5}
+
+/* ══ IMPRESSÃO ══ */
+@media print{
+  body{background:#fff;color:#111}
+  .capa,header,.etapas,.acoes{display:none!important}
+  #etapa-1,#etapa-2{display:none!important}
+  #etapa-3{display:block!important}
+  .cabecalho-resultado{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .secao-treino,.bloco-alertas,.alerta-clinico,.bloco-clinico,.bloco-inferencias{break-inside:avoid;box-shadow:none;border:1px solid #e2e8f0}
+}
